@@ -11,13 +11,12 @@ const resolvers = {
     }
   },
   Mutation: {
-    createStudent: async (parent, { firstName, email }, { models }, info) => {
-      const gtx = await models.Student.create({
+    createStudent: async (parent, { firstName, email }, { models }) => {
+      const addedUser = await models.Student.create({
         firstName,
         email
       });
-
-      return gtx;
+      return addedUser;
     },
     createHobbies: async (root, { studentId, title }, { models }) => {
       return models.Hobbies.create({ studentId, title });
